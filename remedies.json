@@ -1,10 +1,11 @@
 {
-    "flu": "Remedy paragraph for flu.",
-    "dengue": "Remedy paragraph for dengue.",
-    "common_cold": "Remedy paragraph for common cold.",
-    "body_pain": "Remedy paragraph for body pain.",
-    "severe_flu": "Remedy paragraph for severe flu.",
-    "viral_fever": "Remedy paragraph for viral fever.",
-    "bronchitis": "Remedy paragraph for bronchitis.",
-    "fatigue_syndrome": "Remedy paragraph for fatigue syndrome."
+    "flu": "Get plenty of rest, drink warm fluids, and take paracetamol for fever and body aches.",
+    "dengue": "Stay hydrated and consult a doctor immediately. Avoid self-medication like aspirin.",
+    "common_cold": "Drink warm fluids, take steam inhalation, and rest well.",
+    "body_pain": "Rest and use warm compress. Take mild painkillers if needed.",
+    "severe_flu": "Consult a doctor immediately and take prescribed medication.",
+    "viral_fever": "Take rest, drink fluids, and monitor temperature.",
+    "bronchitis": "Avoid smoke, take steam, and consult a doctor if needed.",
+    "fatigue_syndrome": "Maintain a balanced diet, sleep well, and reduce stress.",
+    "influenza": "Get plenty of rest and stay hydrated. Take antiviral medications if prescribed by a doctor. Use paracetamol for fever and body aches. Avoid cold exposure and monitor symptoms like breathing difficulty or high fever."
 }
