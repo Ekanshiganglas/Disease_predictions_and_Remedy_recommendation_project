@@ -3,20 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disease Prediction System</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CureCast - Disease Prediction</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
+
     <div class="container">
-        <h1>Disease Prediction System</h1>
-        <div id="symptom-boxes">
-            <!-- Symptom selection boxes will be added here dynamically -->
+        
+        <!-- 🔥 Header -->
+        <h1>🩺 CureCast</h1>
+        <p class="subtitle">AI-Powered Disease Prediction & Remedies</p>
+
+        <!-- Symptom Inputs -->
+        <div id="symptom-boxes"></div>
+
+        <!-- Buttons -->
+        <div class="btn-group">
+            <button id="addSymptomButton">➕ Add Symptom</button>
+            <button id="predictButton">🔍 Predict Disease</button>
         </div>
-        <button id="addSymptomButton">Add Symptom</button>
-        <button id="predictButton">Predict Disease</button>
-        <div id="result"></div>
-        <div id="remedies"></div> <!-- Add this line to display remedies -->
+
+        <!-- Results -->
+        <div id="result" class="card"></div>
+        <div id="remedies" class="card"></div>
+
     </div>
-    <script src="script.js"></script>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 </html>
