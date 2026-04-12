@@ -8,26 +8,28 @@ const addSymptomButton = document.getElementById('addSymptomButton');
 const predictButton = document.getElementById('predictButton');
 const remediesDiv = document.getElementById('remedies');
 
-// Fetch symptoms from the backend
-fetch('http://127.0.0.1:5000/symptoms')
+// Fetch symptoms from backend
+fetch('/symptoms')
     .then(response => response.json())
     .then(symptoms => {
-        console.log("Symptoms fetched:", symptoms); // Add this line to check if symptoms are fetched
+        console.log("Symptoms fetched:", symptoms);
+
         // Add initial symptom boxes
         for (let i = 0; i < 3; i++) {
             addSymptomBox(symptoms);
         }
 
-        // Event listener for adding a new symptom box
+        // Add symptom button
         addSymptomButton.addEventListener('click', () => {
-            console.log("Add Symptom button clicked"); // Add this line to check if button is clicked
             addSymptomBox(symptoms);
         });
 
-        // Event listener for predicting disease
+        // Predict button
         predictButton.addEventListener('click', () => {
-            console.log("Predict button clicked"); // Add this line to check if button is clicked
-            const selectedSymptoms = Array.from(document.querySelectorAll('select')).map(select => select.value);
+            const selectedSymptoms = Array.from(document.querySelectorAll('select'))
+                .map(select => select.value)
+                .filter(val => val !== "Select a symptom");
+
             predictDisease(selectedSymptoms);
         });
     })
@@ -35,11 +37,13 @@ fetch('http://127.0.0.1:5000/symptoms')
         console.error('Error fetching symptoms:', error);
     });
 
+// Create dropdown
 function addSymptomBox(symptoms) {
     const div = document.createElement('div');
     div.className = 'symptom-box';
 
     const select = document.createElement('select');
+
     const defaultOption = document.createElement('option');
     defaultOption.textContent = 'Select a symptom';
     defaultOption.disabled = true;
@@ -57,9 +61,11 @@ function addSymptomBox(symptoms) {
     symptomBoxesContainer.appendChild(div);
 }
 
+// Predict disease
 function predictDisease(selectedSymptoms) {
-    console.log("Selected symptoms:", selectedSymptoms); // Add this line to check selected symptoms
-    fetch('http://127.0.0.1:5000/predict', {
+    console.log("Selected symptoms:", selectedSymptoms);
+
+    fetch('/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -68,28 +74,41 @@ function predictDisease(selectedSymptoms) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Prediction result:", data); // Add this line to check the prediction result
+        console.log("Prediction result:", data);
+
+        // Show formatted name
         resultDiv.textContent = `The predicted disease is: ${data.disease}`;
+
+        // 🔥 Use ORIGINAL disease for backend
         fetchRemedies(data.disease);
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Prediction error:', error);
         resultDiv.textContent = 'An error occurred during prediction.';
     });
 }
 
+// 🔥 FIXED REMEDIES FUNCTION
 function fetchRemedies(disease) {
-    fetch('remedies.json')
-        .then(response => response.json())
-        .then(remedies => {
-            if (remedies[disease]) {
-                remediesDiv.textContent = `Remedy: ${remedies[disease]}`;
-            } else {
-                remediesDiv.textContent = 'No remedy found for the predicted disease.';
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching remedies:', error);
-            remediesDiv.textContent = 'An error occurred while fetching remedies.';
-        });
+    fetch('/remedies', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ disease: disease })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Remedy result:", data);
+
+        if (data.remedy) {
+            remediesDiv.textContent = `Remedy: ${data.remedy}`;
+        } else {
+            remediesDiv.textContent = 'No remedy found.';
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching remedies:', error);
+        remediesDiv.textContent = 'An error occurred while fetching remedies.';
+    });
 }
