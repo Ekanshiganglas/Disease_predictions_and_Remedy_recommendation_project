@@ -129,7 +129,7 @@ scikit-learn
 
 **Ekanshi Ganglas**
 - GitHub: [@Ekanshiganglas](https://github.com/Ekanshiganglas)
-- LinkedIn: [https://www.linkedin.com/feed/]
+- LinkedIn: [www.linkedin.com/in/ekanshi-ganglas]
 
 ---
 

@@ -7,7 +7,11 @@ from sklearn.linear_model import LogisticRegression
 import json
 import csv
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder='frontend/templates',
+    static_folder='frontend/static'
+)
 CORS(app)
 
 # -------------------------------
