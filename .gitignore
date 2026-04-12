@@ -1,0 +1,22 @@
+# VS Code temp files
+tempCodeRunnerFile.py
+tempCodeRunnerFile*
+*.py.bak
+
+# Python auto-generated files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment folders
+venv/
+env/
+
+# Secret/config files
+.env
+
+# Mac system file
+.DS_Store
+
+# VS Code settings folder
+.vscode/
