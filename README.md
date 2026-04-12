@@ -16,14 +16,12 @@ and recommends home remedies — built with Flask, scikit-learn, and vanilla Jav
 ---
 
 ## 📸 Screenshots
+<div align="center">
+<img src="screenshot/home.png" width="45%"/>
+&nbsp;&nbsp;
+<img src="screenshot/result.png" width="45%"/>
+</div>
 
-> Home Page
-![Home Page](screenshot/home.png)
-
-> Prediction Result
-![Prediction](screenshot/result.png)
-
----
 
 ## 🎯 What does this project do?
 
